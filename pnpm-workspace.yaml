@@ -1,0 +1,16 @@
+packages:
+  - .
+
+nodeLinker: hoisted
+onlyBuiltDependencies:
+  - esbuild
+# The 0.1.1-rc.2 peer family may be published inside the registry's
+# minimum-release-age window; exclude @deepseek-ai so installs resolve.
+minimumReleaseAgeExclude:
+  - '@deepseek-ai/*'
+allowBuilds:
+  esbuild: true
+verifyDepsBeforeRun: false
+
+overrides:
+  '@deepseek-ai/schemastery': 3.18.5

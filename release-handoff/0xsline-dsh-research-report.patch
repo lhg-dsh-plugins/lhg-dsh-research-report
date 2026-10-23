@@ -1,0 +1,37 @@
+From 3daee8f1c16db9debce170b8081fe118815e1c6a Mon Sep 17 00:00:00 2001
+From: PerryLink <perrylink@users.noreply.github.com>
+Date: Thu, 20 Aug 2026 01:12:54 +0800
+Subject: [PATCH] docs: add dsh-research-report
+
+---
+ README.md       | 1 +
+ README.zh-CN.md | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/README.md b/README.md
+index a5a8f31..1a4b17c 100644
+--- a/README.md
++++ b/README.md
+@@ -480,6 +480,7 @@ Management panel: Settings → Plugins.
+ - [dsh-translate](https://github.com/PerryLink/dsh-translate) - Vendor parameter translation and deterministic JSON repair for DeepSeek Harness: a /translate command maps 13 canonical parameters across 11 vendors, and the post-execute repair layer (plus fix_json) fixes broken JSON tool output without fabricating data.
+ - [inspiration-deck-workshop](https://github.com/zjsthmjialin/inspiration-deck-workshop) - Registers the Inspiration Deck Workshop skill: local static HTML presentation decks (6 deck templates, 25+ layouts, themes & motion showroom) with a validate + PNG/PDF export CLI, zero runtime deps.
+ - [pdf-background-gray-codex-skill](https://github.com/zjsthmjialin/pdf-background-gray-codex-skill) - Whitens gray/off-white scan backgrounds in image-based PDFs while preserving resolution, page geometry and anti-aliased text edges (lossless Flate write-back) via a single Python script.
++- [dsh-research-report](https://github.com/PerryLink/dsh-research-report) - Verifiable research-report engine for DeepSeek Harness: content-addressed evidence ledger (claim-to-snapshot binding, tamper-evident) and versioned sealed reports with per-claim verification verdicts and a manifest SHA-256 seal.
+ 
+ ## Notifications & Channels
+ 
+diff --git a/README.zh-CN.md b/README.zh-CN.md
+index b42ce9b..76d3615 100644
+--- a/README.zh-CN.md
++++ b/README.zh-CN.md
+@@ -479,6 +479,7 @@ dsh plugin --profile web add "github:owner/repo#ref"
+ - [inspiration-deck-workshop](https://github.com/zjsthmjialin/inspiration-deck-workshop) - 注册灵感演示工坊技能：本地静态 HTML 演示文稿（6 套 deck 模板、25+ 布局、主题与动效展示馆），带 validate 校验与 PNG/PDF 导出 CLI，零运行时依赖。
+ - [pdf-background-gray-codex-skill](https://github.com/zjsthmjialin/pdf-background-gray-codex-skill) - 去除扫描 PDF 的灰色/米白底色，保持分辨率、页面几何与抗锯齿文字边缘（无损 Flate 写回），核心为单文件 Python 脚本。
+ - [JohnXu22786/docgen](https://github.com/JohnXu22786/docgen) - 文档工坊技能包：纯提示词（Agent Skills）文档生成——README、PR 描述、changelog 与代码审查；零第三方依赖。
++- [dsh-research-report](https://github.com/PerryLink/dsh-research-report) - DeepSeek Harness 可核查研究报告引擎：内容寻址证据账本（claim ↔ 快照绑定、防篡改）与版本化封存报告，每条 claim 带核查结论，manifest SHA-256 封印报告目录。
+ 
+ ## Notifications & Channels
+ 
+-- 
+2.54.0.windows.1
+

@@ -1,0 +1,173 @@
+{
+  "name": "dsh-research-report",
+  "version": "0.3.31",
+  "description": "Verifiable research-report engine for DeepSeek Harness: a content-addressed evidence ledger (claim — snapshot binding, tamper-evident) plus versioned sealed reports where every claim carries a verification verdict and the manifest hash seals the directory. Retrieval orchestration reuses the official ctx.web / ctx.jobs seams — no deep-research loop.",
+  "author": "dsh-research-report contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhg-dsh-plugins/lhg-dsh-research-report.git"
+  },
+  "homepage": "https://github.com/PerryLink/dsh-research-report#readme",
+  "bugs": {
+    "url": "https://github.com/PerryLink/dsh-research-report/issues"
+  },
+  "private": false,
+  "type": "module",
+  "main": "./lib/index.js",
+  "types": "./lib/types/index.d.ts",
+  "bin": {
+    "dsh-research-verify": "./lib/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "cordis.patch.yml",
+    "CHANGELOG.md",
+    "THIRD_PARTY_NOTICES.md",
+    "README.md",
+    "README-zh.md",
+    "README-es.md",
+    "README-pt.md",
+    "README-hi.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dshWorkshop": {
+    "schema": "omdsh-workshop-package/v1",
+    "type": "plugin",
+    "integration": {
+      "protocol": "harness-profile",
+      "artifact": "cordis.patch.yml"
+    },
+    "install": {
+      "mode": "transactional",
+      "adapter": "profile-bundle",
+      "failurePolicy": "generation-rollback",
+      "touchesCurrentBeforeActivation": false
+    },
+    "lifecycle": {
+      "activation": "restart-profile",
+      "dispose": "supported"
+    },
+    "permissions": [
+      "fs:workspace-write",
+      "network:ctx-web-only",
+      "session:read",
+      "session:write",
+      "native-code:none"
+    ],
+    "compatibility": {
+      "dshVersions": [
+        "0.1.7-alpha.2",
+        "0.1.7-rc.1",
+        "0.1.7-rc.2",
+        "0.2.1-alpha.1"
+      ]
+    },
+    "capability": {
+      "id": "research-report",
+      "kind": "service",
+      "invocation": "mount the dsh-research-report bundle row",
+      "expected": "provides ctx.researchReport (assemble), the evidence_add / research_report / ledger_query tools, and a content-addressed evidence ledger with tamper-evident sealed reports under the workspace"
+    },
+    "evidence": {
+      "install": null,
+      "failureIsolation": null,
+      "hotReload": null,
+      "remove": null
+    }
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "research",
+    "evidence-ledger",
+    "verifiable-report",
+    "audit",
+    "citation-verification"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": ">=0.1.6-0 <0.2.0 || >=0.2.0-0 <0.3.0 || >=0.2.1-0 <0.3.0"
+  },
+  "packageManager": "pnpm@11.7.0",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.5-alpha.1",
+    "dsh-data-quality": ">=0.1.0 <0.4.0",
+    "@deepseek-ai/dsh-jobs": ">=0.1.6-0 <0.2.0 || >=0.2.0-0 <0.3.0 || >=0.2.1-0 <0.3.0",
+    "@deepseek-ai/dsh-session": ">=0.1.6-0 <0.2.0 || >=0.2.0-0 <0.3.0 || >=0.2.1-0 <0.3.0",
+    "@deepseek-ai/dsh-system-prompt": ">=0.1.6-0 <0.2.0 || >=0.2.0-0 <0.3.0 || >=0.2.1-0 <0.3.0",
+    "@deepseek-ai/dsh-tools": ">=0.1.6-0 <0.2.0 || >=0.2.0-0 <0.3.0 || >=0.2.1-0 <0.3.0",
+    "@deepseek-ai/dsh-web": ">=0.1.6-0 <0.2.0 || >=0.2.0-0 <0.3.0 || >=0.2.1-0 <0.3.0",
+    "@deepseek-ai/schemastery": "^3.18.5-alpha.1"
+  },
+  "peerDependenciesMeta": {
+    "dsh-data-quality": {
+      "optional": true
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@deepseek-ai/dsh-util-values": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-attachment": "0.2.1-rc.2",
+    "@deepseek-ai/cordis": "^4.0.5-alpha.1",
+    "@deepseek-ai/cordis-plugin-include": "^1.0.10-alpha.1",
+    "@deepseek-ai/cordis-plugin-loader": "^1.0.6-alpha.1",
+    "@deepseek-ai/dsh-agent": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-brand": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-invariants": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-scope": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-user-approval": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-jobs": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-jobs-local": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-llm": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-web": "0.2.1-rc.2",
+    "@deepseek-ai/schemastery": "^3.18.5-alpha.1",
+    "@types/node": "^22.20.5",
+    "@vitest/coverage-v8": "^3.2.0",
+    "oxlint": "0.18.1",
+    "vitest": "^3.2.0",
+    "tsdown": "^0.23.1",
+    "typescript": "^5.9.0"
+  },
+  "scripts": {
+    "build": "node scripts/prepare.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "typecheck:ci": "tsc -p tsconfig.ci.json --noEmit",
+    "typecheck:checkout": "tsc -p tsconfig.checkout.json --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "oxlint",
+    "prepare": "node scripts/prepare.mjs",
+    "verify:self-contained": "node scripts/verify-self-contained.mjs",
+    "check:lockfile": "node scripts/check-lockfile-drift.mjs",
+    "verify:artifacts": "node scripts/verify-artifacts.mjs",
+    "verify:readme-sync": "node scripts/check-readme-sync.mjs",
+    "verify:frozen-contract": "node scripts/verify-frozen-contract.mjs",
+    "pack:check": "node scripts/prepare.mjs && pnpm pack"
+  },
+  "license": "Apache-2.0",
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/PerryLink"
+  },
+  "pnpm": {}
+}
